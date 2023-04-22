@@ -4,9 +4,17 @@ from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import string
 from nltk.corpus import stopwords
+import os
 
-with open('api_key.txt', 'r') as file:
-    api_key = file.read()
+# get the current directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# append the path to api_keys.txt
+api_key_file = os.path.join(BASE_DIR, 'api_key.txt')
+
+# open the file
+with open(api_key_file, 'r') as file:
+    api_key = file.read().strip()
 
 def get_articles(topic, api_key=api_key, period=7):
     

@@ -21,5 +21,7 @@ from summarize.views import summary_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/article', article_view, name="article_view"),
-    path('api/summarize/', summary_view, name='summarize'),
+    path('api/article/<str:topic>/<int:period>/', article_view, name='article'),
+    path('api/summary/', summary_view, name='summary'),
+    path('api/summary/<str:lang>/<int:words>/', summary_view, name='summary'),
 ]

@@ -3,3 +3,4 @@ bs4
 requests
 nltk
 django
+django-cors-headers

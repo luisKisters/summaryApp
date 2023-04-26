@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const API_URL = 'http://localhost:8000/api/summary/EN';
 
@@ -13,15 +14,12 @@ export const Summary = () => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        fetch(`${API_URL}/${wordCount}`, {
-            method: 'POST',
+        axios.post(`${API_URL}/${wordCount}`, { text: 'YOUR TEXT HERE' }, {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ text: 'YOUR TEXT HERE' }),
         })
-            .then(response => response.json())
-            .then(data => setSummary(data.summary))
+            .then(response => setSummary(response.data.summary))
             .catch(error => console.error(error));
     }
 
@@ -46,7 +44,6 @@ export const Summary = () => {
             {summary && (
                 <div>
                     <h2>Summary</h2>
-                    {/* <p dangerouslySetInnerHTML={{ __html: summary }}></p> */}
                     <p>{JSON.stringify(summary)}</p>
                 </div>
             )}

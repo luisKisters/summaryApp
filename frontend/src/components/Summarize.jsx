@@ -14,12 +14,18 @@ export const Summary = () => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        axios.post(`${API_URL}/${wordCount}`, { text: 'YOUR TEXT HERE' }, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then(response => setSummary(response.data.summary))
+        axios.get('/csrf-token/')
+            .then(response => {
+                const csrftoken = response.data.csrfToken;
+                axios.post(`${API_URL}/${wordCount}/`, {}, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken
+                    }
+                })
+                    .then(response => setSummary(response.data.summary))
+                    .catch(error => console.error(error));
+            })
             .catch(error => console.error(error));
     }
 
@@ -41,12 +47,7 @@ export const Summary = () => {
                 <br />
                 <button type="submit">Summarize</button>
             </form>
-            {summary && (
-                <div>
-                    <h2>Summary</h2>
-                    <p>{JSON.stringify(summary)}</p>
-                </div>
-            )}
+            <div>{summary}</div>
         </div>
     );
 };

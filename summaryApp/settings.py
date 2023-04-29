@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-@s0#ouj_0rkjl+w+ceo=_4f3g86bt@ke!o0d(e^i&9((+!pu&2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost:3000/', 'localhost:8000/',
+                 '127.0.0.1:3000/' '127.0.0.1:8000/', 'localhost']
 
 
 # Application definition
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # stuff that I added
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
 ROOT_URLCONF = 'summaryApp.urls'
@@ -57,7 +59,7 @@ ROOT_URLCONF = 'summaryApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,9 +67,15 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # stuff I added
+                'django.template.context_processors.csrf',
             ],
         },
     },
+]
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'frontend/build',
 ]
 
 WSGI_APPLICATION = 'summaryApp.wsgi.application'
@@ -127,14 +135,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Stuff that I added
 
-CORS_ORIGIN_ALLOW_ALL = True
+CSRF_COOKIE_SECURE = True
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:8000",
-#     "http://localhost:3000",
-#     "http://127.0.0.1:8000",
-#     "http://127.0.0.1:3000",
-# ]
+CSRF_COOKIE_HTTPONLY = True
+
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_METHODS = ['DELETE',    'GET',
                       'OPTIONS',    'PATCH',    'POST',    'PUT',]

@@ -24,7 +24,7 @@ export const Summary = () => {
                     }
                 })
                     .then(response => {
-                        const summary = response.data.summary;
+                        const summary = response;
                         setSummary(summary);
                     })
                     .catch(error => console.error(error));
@@ -50,7 +50,12 @@ export const Summary = () => {
                 <br />
                 <button type="submit">Summarize</button>
             </form>
-            <p>{typeof summary === 'string' ? summary : JSON.stringify(summary)}</p>
+            <p>GPT Model: {typeof summary === 'string' ? summary : JSON.stringify(summary.summary.model)}</p>
+            <p>Total Tokens: {typeof summary === 'string' ? summary : JSON.stringify(summary.summary.usage.total_tokens)}</p>
+            <p>Summary: {typeof summary === 'string' ? summary : JSON.stringify(summary.summary.choices[0].message.content)}</p>
+            <p>Created at: {typeof summary === 'string' ? summary : JSON.stringify(summary.summary.created)}</p>
+            <p>Created at: {typeof summary === 'string' ? summary : new Date(summary.summary.created * 1000).toLocaleString()} UTC</p>
+            <p>Complete API Response: {typeof summary === 'string' ? summary : JSON.stringify(summary)}</p>
         </div>
     );
 };

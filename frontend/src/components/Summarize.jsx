@@ -23,7 +23,10 @@ export const Summary = () => {
                         'X-CSRFToken': csrftoken
                     }
                 })
-                    .then(response => setSummary(response.data.summary))
+                    .then(response => {
+                        const summary = response.data.summary;
+                        setSummary(summary);
+                    })
                     .catch(error => console.error(error));
             })
             .catch(error => console.error(error));
@@ -47,7 +50,7 @@ export const Summary = () => {
                 <br />
                 <button type="submit">Summarize</button>
             </form>
-            <div>{summary}</div>
+            <p>{typeof summary === 'string' ? summary : JSON.stringify(summary)}</p>
         </div>
     );
 };

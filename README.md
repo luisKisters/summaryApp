@@ -1,6 +1,6 @@
 # summaryApp
 
-summaryApp is a Django web application that uses [OpenAI's GPT-3 API](https://platform.openai.com/docs/api-reference/gpt-3) to summarize articles obtained from the[News API](https://newsapi.org/) and scraped with [BeautifulSoup 4](https://pypi.org/project/beautifulsoup4/). For frontend [ReactJS](https://react.dev/) is used.
+summaryApp is a Django web application that uses [OpenAI's GPT-3 API](https://platform.openai.com/docs/api-reference/gpt-3) to summarize articles obtained from the [News API](https://newsapi.org/) and scraped with [BeautifulSoup 4](https://pypi.org/project/beautifulsoup4/). For frontend [ReactJS](https://react.dev/) is used.
 
 ## Prerequisites
 

@@ -35,13 +35,17 @@ def summarize_article(words, language):
     )
 
     # Add the summary to the JSON data
-    article_data['summary'] = res
+    # article_data['summary'] = res
 
     # Render the JSON data in the browser
-    return JsonResponse(article_data)
-    return response
+    # return JsonResponse(article_data)
+    return JsonResponse(res)
 
 
 def summary_view(request, lang='EN', words=100):
-    response = summarize_article(words=words, language=lang)
+    try:
+        response = summarize_article(words=words, language=lang)
+    except Exception as e:
+        return JsonResponse({'error': str(e)})
+
     return HttpResponse(response.content, content_type="application/json")

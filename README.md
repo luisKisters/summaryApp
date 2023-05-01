@@ -24,18 +24,22 @@ To run summaryApp, you will need to have Python 3.7 or later installed on your s
  [![Click here to open Lucidspark flowchart](https://github.com/luisKisters/summaryApp/blob/master/LucidsparkFlowchart.png)](https://lucid.app/lucidspark/703976a1-331a-49f3-9179-cc9ee31bae16/edit?viewport_loc=-1545%2C45%2C2248%2C1153%2C0_0&invitationId=inv_ad92cf59-9cc3-4d6b-a18f-4893af71582d)
  
  ## ToDo
+- [ ] Make selecting article topic and time period work
+  - [ ] Stop summarizing articles from [localhost:8000/](http://localhost:8000/) because this returns article with default parameters and not selected parameters
+- [ ] Explain how to use API in [README.md](https://github.com/luisKisters/summaryApp/blob/master/README.md)
+- [ ] Start using [GitHub Issues](https://github.com/luisKisters/summaryApp/issues) instead of ToDo list for issues/nugs/errors
 - [ ] Add tests 
 - [ ] Add workflows
 - [ ] Add automated build
-- [ ] Add README.md
-- [ ] Change summary API response format to so that it only returns the summary, not the article 
-- [ ] [Summarize.jsx] Add that if the the API request to http://localhost:8000/api/summary/EN/100/ doesn't return statusText: 'OK' the error gets displayed in 
-- [ ] Add that if article_api.py returns no articles, also an error gets displayed
-- [ ] Make it possible to use webserver on [127.0.0.1:8000/](http://127.0.0.1:8000/)
+- [ ] (Summarize.jsx) Add that if the the API request to http://localhost:8000/api/summary/EN/100/ doesn't return statusText: 'OK' the error gets displayed in 
+- [ ] Make visiting Django webserver over [127.0.0.1:8000/](http://127.0.0.1:8000/) possible 
   - [ ] Add [127.0.0.1:8000/](http://127.0.0.1:8000/) to [ALLOWED_HOSTS](https://github.com/luisKisters/summaryApp/blob/master/summaryApp/settings.py#L28)
-  - [ ] Solve `CSRF verification failed. Request aborted.` error on [127.0.0.1:8000/](http://127.0.0.1:8000/)
-- [ ] Add priority system with colors to ToDo list
-- [ ] Automatically update README.md ToDos if [Todo_list.MD](https://github.com/luisKisters/summaryApp/blob/master/Todo_list.MD) has new commits or got changed
-- [ ] Maybe start using a normal task software for Todos
+  - [ ] Solve `CSRF verification failed. Request aborted.` error on [127.0.0.1:8000/](http://127.0.0.1:8000/) when trying to generate a summary 
+- [ ] Use priority system for tasks with colors
+- [ ] Maybe start using a software for tasks 
+- [ ] Add that if article_api.py returns no articles, display an error
+- [ ] Automatically sort solved ToDos/Tasks to bottom of [Todo_list.md](https://github.com/luisKisters/summaryApp/blob/master/Todo_list.md)
+- [x] Add README.md
+- [x] Change summary API response format to so that it only returns the summary, not the article 
 
 [ToDo list file](https://github.com/luisKisters/summaryApp/blob/master/Todo_list.MD)

@@ -1,7 +1,0 @@
-- Add tests 
-- Add workflows
-- Add automated build
-- Add README.md
-- Change summary API response format to so that it only returns the summary, not the article 
-- [Summarize.jsx] Add that if the the API request to http://localhost:8000/api/summary/EN/100/ doesn't return statusText: 'OK' the error gets displayed in 
-- Add that if article_api.py returns no articles, also an error gets displayed

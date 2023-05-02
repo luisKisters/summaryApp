@@ -1,8 +1,11 @@
+- [ ] Create prod branch
 - [ ] Make selecting article topic and time period work
   - [ ] Stop summarizing articles from [localhost:8000/](http://localhost:8000/) because this returns article with default parameters and not selected parameters
 - [ ] Explain how to use API in [README.md](https://github.com/luisKisters/summaryApp/blob/master/README.md)
 - [ ] Start using [GitHub Issues](https://github.com/luisKisters/summaryApp/issues) instead of ToDo list for issues/nugs/errors
 - [ ] Add tests 
+  - [ ] For React (playwright?)
+  - [ ] For Django 
 - [ ] Add workflows
 - [ ] Add automated build
 - [ ] (Summarize.jsx) Add that if the the API request to http://localhost:8000/api/summary/EN/100/ doesn't return statusText: 'OK' the error gets displayed in 
@@ -14,4 +17,4 @@
 - [ ] Add that if article_api.py returns no articles, display an error
 - [ ] Automatically sort solved ToDos/Tasks to bottom of [Todo_list.md](https://github.com/luisKisters/summaryApp/blob/master/Todo_list.md)
 - [x] Add README.md
-- [x] Change summary API response format to so that it only returns the summary, not the article 
+- [x] Change summary API response format to so that it only returns the summary, not the article

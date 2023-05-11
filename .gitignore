@@ -1,2 +1,3 @@
-api_key.txt
 __pycache__/
+article/api_key.txt
+summarize/api_key.txt

@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import string
 from nltk.corpus import stopwords
 import os
+import re
 
 # get the current directory
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -16,8 +17,9 @@ api_key_file = os.path.join(BASE_DIR, 'api_key.txt')
 with open(api_key_file, 'r') as file:
     api_key = file.read().strip()
 
+
 def get_articles(topic, api_key=api_key, period=7):
-    
+
     API_KEY = api_key
 
     # Define the time range for the search (last 7 days)
@@ -51,14 +53,17 @@ def get_articles(topic, api_key=api_key, period=7):
         author = most_recent["author"]
         heading = most_recent["title"]
         date = most_recent["publishedAt"]
-        
+
         # Remove unwanted characters
         article_content = article_content.replace('\n', '')
         article_content = article_content.replace('\t', '')
         article_content = article_content.replace('\r', '')
         article_content = article_content.replace('\\', '')
-        
-        article_content = article_content.translate(str.maketrans('', '', string.punctuation))
+        article_content = article_content.replace('\n', '')
+        # article_content = re.sub(r'\W+', article_content)
+
+        article_content = article_content.translate(
+            str.maketrans('', '', string.punctuation))
 
         # Convert all text to lowercase
         article_content = article_content.lower()
@@ -66,15 +71,15 @@ def get_articles(topic, api_key=api_key, period=7):
         # Remove stopwords
         stop_words = set(stopwords.words('english'))
         article_words = article_content.split()
-        article_content = ' '.join([word for word in article_words if word not in stop_words])
+        article_content = ' '.join(
+            [word for word in article_words if word not in stop_words])
 
         # Stemming
         from nltk.stem import PorterStemmer
         ps = PorterStemmer()
         article_words = article_content.split()
         article_content = ' '.join([ps.stem(word) for word in article_words])
-        
-        
+
         # Create a dictionary with extracted data
         extracted_data = {
             "author": author,
